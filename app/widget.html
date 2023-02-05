@@ -105,11 +105,11 @@
 
 	<script>
 		function myfunctionEdit() {
-			var EditNamee = document.getElementById("updateStudent_id").value;
-			var EditEmaill = document.getElementById("UpdateStudentname").value;
-			var EditMobilee = document.getElementById("UpdateGrade").value;
-			var EditAgee = document.getElementById("UpdateStudent_Birthdate").value;
-			var UpdateMentorD = document.getElementById("UpdateMentor").value;
+			var updateStudent_id = document.getElementById("updateStudent_id").value;
+			var UpdateStudentname = document.getElementById("UpdateStudentname").value;
+			var UpdateGrade = document.getElementById("UpdateGrade").value;
+			var UpdateStudent_Birthdate = document.getElementById("UpdateStudent_Birthdate").value;
+			var UpdateMentor = document.getElementById("UpdateMentor").value;
 
 			ZOHO.CREATOR.init()
 				.then(function (data) {
@@ -149,16 +149,16 @@
 
 			var iEdit = rEdit.parentNode.parentNode.rowIndex;
 			var x = document.getElementById("customers").rows[iEdit].cells;
-			var editName = x[0].innerHTML;
-			var editMobile = x[1].innerHTML;
-			var editEmail = x[2].innerHTML;
-			var editAge = x[3].innerHTML;
-			var hidID = x[4].innerHTML;
-			document.getElementById("updateStudent_id").value = editName;
-			document.getElementById("UpdateStudentname").value = editEmail;
-			document.getElementById("UpdateStudent_Birthdate").value = editAge;
-			document.getElementById("UpdateGrade").value = editMobile;
-			document.getElementById("UpdateMentor").value = hidID;
+			var Student_ID = x[0].innerHTML;
+			var Name = x[1].innerHTML;
+			var Birthdate = x[2].innerHTML;
+			var Gender = x[3].innerHTML;
+			var Mentor = x[4].innerHTML;
+			document.getElementById("updateStudent_id").value = Student_ID;
+			document.getElementById("UpdateStudentname").value = Name;
+			document.getElementById("UpdateStudent_Birthdate").value = Birthdate;
+			document.getElementById("UpdateGrade").value = Gender;
+			document.getElementById("UpdateMentor").value = Mentor;
 		}
 
 		function myftn() {
