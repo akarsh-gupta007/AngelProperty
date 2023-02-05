@@ -114,7 +114,7 @@
 			ZOHO.CREATOR.init()
 				.then(function (data) {
 					formData = {
-						"data": { "Student_ID": Student_ID, "Name": Name, "Birthdate": Birthdate, "Grade": Grade, "Mentor": Mentor }
+						"data": { "Student_ID": updateStudent_id, "Name": UpdateStudentname, "Birthdate": UpdateStudent_Birthdate, "Grade": UpdateGrade, "Mentor": UpdateMentor }
 					}
 					var config = {
 						reportName: "Sheet1_Report",
@@ -265,7 +265,6 @@
 		}
 
 
-		// Selecting button element
 		var btn = document.getElementById("myBtn");
 		btn.addEventListener("click", showtable);
 		btn.addEventListener("click", myfunction);
