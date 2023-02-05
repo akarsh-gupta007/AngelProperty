@@ -244,16 +244,16 @@ body {
 	text-align: center;
 }
 
-#customers tr:nth-child(even) {
 
+#customers tr:nth-child(even) {
 	border-radius: 15px;
 }
+
 
 #customers tr:hover {
 	background-color: black;
 	border-radius: 15px;
 	cursor: pointer;
-
 }
 
 #customers th {
@@ -270,6 +270,7 @@ body {
 	border: solid 1px #000;
 	border-style: none solid solid none;
 }
+
 
 #customers tr:first-child td:first-child {
 	border-top-left-radius: 15px;

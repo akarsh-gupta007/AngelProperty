@@ -60,13 +60,16 @@
 		</b>
 		<form id="itsMyEditForm">
 
-	
 
-			<p>Student ID</p><input type="text" id="updateStudent_id" name="updateStudent_id" placeholder="Update Your Name">
-			<p>Name</p><input type="text" id="UpdateStudentname" name="UpdateStudentname" placeholder="Update Your Email">
-			<p>Birthdate</p><input type="number" id="UpdateStudent_Birthdate" name="UpdateStudent_Birthdate" placeholder="Update Your Age">
+
+			<p>Student ID</p><input type="text" id="updateStudent_id" name="updateStudent_id"
+				placeholder="Update Your Name">
+			<p>Name</p><input type="text" id="UpdateStudentname" name="UpdateStudentname"
+				placeholder="Update Your Email">
+			<p>Birthdate</p><input type="number" id="UpdateStudent_Birthdate" name="UpdateStudent_Birthdate"
+				placeholder="Update Your Age">
 			<p>Grade</p><input type="text" id="UpdateGrade" name="UpdateGrade" placeholder="Update Your Mobile Number">
-			<p>Mentor</p>  <input type="text" id="UpdateMentor" name="UpdateMentor" placeholder="Update Mentor">
+			<p>Mentor</p> <input type="text" id="UpdateMentor" name="UpdateMentor" placeholder="Update Mentor">
 
 			<button class="Submitbutton" id="UpdateRecord" type="button">U P D A T E</button><br><br><br>
 			<button class="Resetbutton" id="SubmitReset1" type="button" onclick="showtable()">C A N C E L</button>
@@ -122,7 +125,9 @@
 						data: formData
 					}
 					ZOHO.CREATOR.API.updateRecord(config).then(function (response) {
-						if (response.code == 3000) {
+						if (Student_ID == id) {
+
+
 							console.log("Record Updated successfully");
 						}
 					});
@@ -169,24 +174,32 @@
 		function myfunctionAdd() {
 			ZOHO.CREATOR.init()
 				.then(function (data) {
-					//Code goes here
-					var Student_ID = document.getElementById("Student_ID").value;
-					var Name = document.getElementById("Name").value;
-					var Birthdate = document.getElementById("Birthdate").value;
-					var Gender = document.getElementById("Gender").value;
-					var Mentor = document.getElementById("Mentor").value;
+
+					var Student_IDs = document.getElementById("Student_ID").value;
+					var Names = document.getElementById("Name").value;
+					var Birthdates = document.getElementById("Birthdate").value;
+					var Grades = document.getElementById("Grade").value;
+					var Mentors = document.getElementById("Mentor").value;
 
 					formData = {
-						"data": { "Student_ID": Student_ID, "Name": Name, "Birthdate": Birthdate, "Grade": Grade, "Mentor": Mentor }
+						"data": { "Student_ID": Student_IDs, "Name": Names, "Birthdate": Birthdates, "Grade": Grades, "Mentor": Mentors }
 					}
+					console.log(formData)
 					var config = {
 						formName: "Sheet1",
 						data: formData
 					}
 					ZOHO.CREATOR.API.addRecord(config).then(function (response) {
+
+
+						var record=response.data;
+						record.push(formData)
+						console.log(response.data, "addrecord")
 						if (response.code == 3000) {
 							console.log("Record added successfully");
 						}
+
+
 					});
 
 				});
@@ -228,6 +241,7 @@
 						var a = 0;
 						var roww = 1;
 						var recordArray = response.data;
+						
 
 						for (var index in recordArray) {
 							var rec = (recordArray[index]);
