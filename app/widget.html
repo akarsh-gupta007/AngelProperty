@@ -2,133 +2,295 @@
 <html>
 
 <head>
+
 	<meta charset="UTF-8">
-	<link rel="stylesheet" type="text/css" href="style.css">
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-	<script src="./Script.js">
+	<link rel="stylesheet" href="Style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+	<script src="https://js.zohostatic.com/creator/widgets/version/1.0/widgetsdk-min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 
-	</script>
-	<script  type="text/javascript">
-				console.log(ZOHO.CREATOR.API)
-				// console.log(ZOHO.CREATOR.API.getAllRecords)
-				// console.log(ZOHO.CREATOR.API.getAllRecords)
-				// console.log(ZOHO.CREATOR.API.getAllRecords)
-				// console.log(ZOHO.CREATOR.API.getAllRecords)
-				console.log(ZOHO.CREATOR.init().then(res=>res.json()).then((x)=>{console.log(x)}))
-
-
-		ZOHO.CREATOR.init().then((d) => {
-
-			console.log(d)
-		})
-		</script>
-
-	<!-- <script type="text/javascript">
-		function onLoadBody() {
-			createListView();
-		}
-
-		function createListView() {
-			document.getElementById("createView").style.display = 'none';
-			document.getElementById("listview").style.display = 'block';
-			var input = { 'module': 'Leads' };
-
-			ZOHO.API.RECORDS.get(input).then(function (resp) {
-				var data = JSON.parse(resp).data;
-				console.log(data);
-				var html = "<table><tr><th></th><th>Last Name</th><th>Company</th><th>Email</th><th>Lead Source</th></tr>"
-				for (var i = 0; i < data.length; i++) {
-					html += "<tr data-id=" + data[i].id + "><td><button onclick='edit(\"" + data[i].id + "\")'>Edit</button>&nbsp;<button onclick='deleteR(\"" + data[i].id + "\")'>Delete</button></td><td>" + (data[i].Last_Name) + "</td><td>" + data[i].Company + "</td><td>" + (data[i].Email == null ? "" : data[i].Email) + "</td><td>" + (data[i].Lead_Source == null ? "" : data[i].Lead_Source) + "</td><td></tr>";
-				}
-				html += "</table>";
-				document.getElementById('listview').innerHTML = html;
-
-			});
-		}
-
-
-		function edit(id) {
-			alert("This will update Last Name with 1")
-
-			var input = { 'module': 'Leads', 'body': { 'data': [{ "id": id, "Last_Name": $("tr[data-id='" + id + "'] td")[1].innerHTML + "1" }] } };
-			headers = { 'Content-Type': 'application/json' };
-			ZOHO.API.RECORDS.put(input).then(function (resp) {
-				var jsonData = JSON.parse(resp);
-				location.reload();
-			});
-		}
-		function deleteR(id) {
-			var input = { 'module': 'Leads', 'id': id };
-			ZOHO.API.RECORDS.delete(input).then(function (resp) {
-				var jsonData = JSON.parse(resp);
-				location.reload();
-			});
-		}
-		function createLead() {
-			document.getElementById("listview").style.display = 'none';
-			document.getElementById("createView").style.display = 'block';
-		}
-		function createLeadForm() {
-			var formObj = {};
-			var inputs = $('#leadForm').serializeArray();
-			$.each(inputs, function (i, input) {
-				formObj[input.name] = input.value;
-			});
-
-			var input = { 'module': 'Leads', 'body': { 'data': [formObj] } };
-			headers = { 'Content-Type': 'application/json' };
-			ZOHO.API.RECORDS.post(input).then(function (resp) {
-				var jsonData = JSON.parse(resp);
-				location.reload();
-			});
-
-			return false;
-		}
-
-	</script> -->
 </head>
 
 <body>
-	<div class='full'>
-		<div class="right">
-			<button>Create new Lead</button>
-			<div id="listview">
-				<table>
-					<tr>
-						<th></th>
-						<th>Last Name</th>
-						<th>Company</th>
-						<th>Email</th>
-						<th>Lead Source</th>
-					</tr>
-					<tr>
-						<td>cb</td>
-						<td>Raghu Ram</td>
-						<td>Zoho</td>
-						<td>12547</td>
-						<td>Web</td>
-					</tr>
-				</table>
+	<div class="wrapper">
+		<div class="icon facebook" onclick="myftn()">
+			<div class="tooltip">
+				<b> Add&nbsp;Data</b>
 			</div>
-			<div id='createView'>
-				<form id='leadForm' return false;">
-					<div id='formelement'>
-						Last Name : <input type="text" name="Last_Name" />
-					</div>
-					<div id='formelement'>
-						Company : <input type="text" name="Company" />
-					</div>
-					<div id='formelement'>
-						Email : <input type="text" name="Email" />
-					</div>
-					<div id='formelement'>
-						Lead Source : <input type="text" name="Lead_Source" />
-					</div>
-					<input type="submit" name="Save">
-				</form>
+			<span><i class="fa fa-plus"></i></span>
+		</div>
+		<div class="icon twitter" onclick="showtable()" id="myBtn">
+			<div class="tooltip">
+				<b> View&nbsp;Data</b>
 			</div>
+			<span><i class="fab fa-wpforms"></i></span>
 		</div>
 	</div>
+	<div class="contact-form" id="myForm">
+		<img alt="" class="avatar" src="https://i.postimg.cc/zDyt7KCv/a1.jpg">
+		<b>
+			<h2>Add Data</h2>
+		</b>
+		<form id="itsMyForm">
+
+			<p>Student ID</p>
+			<input type="text" id="Student_ID" name="Student_ID" placeholder="Enter your Student ID">
+			<p>Name</p>
+			<input type="text" id="Name" name="Name" placeholder="Enter Your Full Name">
+			<p>Birthdate</p>
+			<input type="date" id="Birthdate" name="Birthdate" placeholder="Enter Your Birthdate">
+			<p>Grade</p>
+			<input type="text" id="Mentor" name="Mentor" placeholder="Enter Your Mentor ">
+			<p>Mentor</p>
+			<input type="text" id="Mentor" name="Mentor" placeholder="Enter Your Mentor ">
+
+
+			<button class="Submitbutton" id="SubmitReset" type="button">S U B M I T</button><br><br><br>
+
+			<button class="Resetbutton" id="SubmitReset1" type="button" onclick="resetForm()">R E S E T</button>
+		</form>
+
+
+	</div>
+	<!--//___________________________________-->
+	<div class="contact-form" id="myFormupdate">
+		<img alt="" class="avatar" src="https://i.postimg.cc/zDyt7KCv/a1.jpg">
+		<b>
+			<h2>Update Form</h2>
+		</b>
+		<form id="itsMyEditForm">
+
+	
+
+			<p>Student ID</p><input type="text" id="updateStudent_id" name="updateStudent_id" placeholder="Update Your Name">
+			<p>Name</p><input type="text" id="UpdateStudentname" name="UpdateStudentname" placeholder="Update Your Email">
+			<p>Birthdate</p><input type="number" id="UpdateStudent_Birthdate" name="UpdateStudent_Birthdate" placeholder="Update Your Age">
+			<p>Grade</p><input type="text" id="UpdateGrade" name="UpdateGrade" placeholder="Update Your Mobile Number">
+			<p>Mentor</p>  <input type="text" id="UpdateMentor" name="UpdateMentor" placeholder="Update Mentor">
+
+			<button class="Submitbutton" id="UpdateRecord" type="button">U P D A T E</button><br><br><br>
+			<button class="Resetbutton" id="SubmitReset1" type="button" onclick="showtable()">C A N C E L</button>
+
+		</form>
+	</div>
+	<!--__________________________________-->
+	<table id="customers" width="91%" border="2px">
+		<tr>
+			<th>Student_ID</th>
+			<th>Name</th>
+			<th>Birthdate</th>
+			<th>Grade</th>
+			<th>Mentor</th>
+			<th>Delete</th>
+			<th>Edit</th>
+		</tr>
+
+	</table>
+
+
+	<div class="removeBtn" id="DeleteButtonn">
+		<div onclick="DeleteDataa(this)">
+			<div>
+			</div>
+			<span><i class="fas fa-trash-alt"></i></span>
+		</div>
+	</div>
+	<div class="editBtn" id="EditButton">
+		<div onclick="EditDataa(this)">
+			<div>
+			</div>
+			<span><i class="fas fa-edit"></i></span>
+		</div>
+	</div>
+
+	<script>
+		function myfunctionEdit() {
+			var EditNamee = document.getElementById("updateStudent_id").value;
+			var EditEmaill = document.getElementById("UpdateStudentname").value;
+			var EditMobilee = document.getElementById("UpdateGrade").value;
+			var EditAgee = document.getElementById("UpdateStudent_Birthdate").value;
+			var UpdateMentorD = document.getElementById("UpdateMentor").value;
+
+			ZOHO.CREATOR.init()
+				.then(function (data) {
+					formData = {
+						"data": { "Student_ID": Student_ID, "Name": Name, "Birthdate": Birthdate, "Grade": Grade, "Mentor": Mentor }
+					}
+					var config = {
+						reportName: "Sheet1_Report",
+						id: Student_ID,
+						data: formData
+					}
+					ZOHO.CREATOR.API.updateRecord(config).then(function (response) {
+						if (response.code == 3000) {
+							console.log("Record Updated successfully");
+						}
+					});
+
+				});
+		}
+
+
+		function resetUpdateForm() {
+			setTimeout(function () {
+				document.getElementById("itsMyEditForm").reset();
+			}, 1000);
+			document.getElementById("myFormupdate").style.display = "none";
+		}
+		var button_edit = document.getElementById("UpdateRecord");
+		button_edit.addEventListener("click", myfunctionEdit);
+		button_edit.addEventListener("click", showtable);
+		button_edit.addEventListener("click", myfunction);
+
+
+		function EditDataa(rEdit) {
+			document.getElementById("customers").style.display = "none";
+			document.getElementById("myFormupdate").style.display = "block";
+
+			var iEdit = rEdit.parentNode.parentNode.rowIndex;
+			var x = document.getElementById("customers").rows[iEdit].cells;
+			var editName = x[0].innerHTML;
+			var editMobile = x[1].innerHTML;
+			var editEmail = x[2].innerHTML;
+			var editAge = x[3].innerHTML;
+			var hidID = x[4].innerHTML;
+			document.getElementById("updateStudent_id").value = editName;
+			document.getElementById("UpdateStudentname").value = editEmail;
+			document.getElementById("UpdateStudent_Birthdate").value = editAge;
+			document.getElementById("UpdateGrade").value = editMobile;
+			document.getElementById("UpdateMentor").value = hidID;
+		}
+
+		function myftn() {
+			document.getElementById("customers").style.display = "none";
+			document.getElementById("myForm").style.display = "block";
+		}
+
+		function myfunctionAdd() {
+			ZOHO.CREATOR.init()
+				.then(function (data) {
+					//Code goes here
+					var Student_ID = document.getElementById("Student_ID").value;
+					var Name = document.getElementById("Name").value;
+					var Birthdate = document.getElementById("Birthdate").value;
+					var Gender = document.getElementById("Gender").value;
+					var Mentor = document.getElementById("Mentor").value;
+
+					formData = {
+						"data": { "Student_ID": Student_ID, "Name": Name, "Birthdate": Birthdate, "Grade": Grade, "Mentor": Mentor }
+					}
+					var config = {
+						formName: "Sheet1",
+						data: formData
+					}
+					ZOHO.CREATOR.API.addRecord(config).then(function (response) {
+						if (response.code == 3000) {
+							console.log("Record added successfully");
+						}
+					});
+
+				});
+		}
+
+
+		function resetForm() {
+			setTimeout(function () { document.getElementById("itsMyForm").reset(); }, 1000);
+		}
+		var buttonbtn = document.getElementById("SubmitReset");
+		buttonbtn.addEventListener("click", myfunctionAdd);
+		buttonbtn.addEventListener("click", resetForm);
+		function showtable() {
+			document.getElementById("myForm").style.display = "none";
+			document.getElementById("customers").style.display = "block";
+			document.getElementById("myFormupdate").style.display = "none";
+		}
+
+
+		function myfunction() {
+			var rowCount = customers.rows.length;
+			for (var i = rowCount - 1; i > 0; i--) {
+				customers.deleteRow(i);
+			}
+			// var array1 = [];
+			ZOHO.CREATOR.init()
+				.then(function (data) {
+					//Code goes here
+					config = {
+						appName: "students",
+						reportName: "Sheet1_Report",
+						criteria: "(ID!=0)",
+						page: 1,
+						pageSize: 35
+					}
+
+					ZOHO.CREATOR.API.getAllRecords(config).then(function (response) {
+						//callback block
+						var a = 0;
+						var roww = 1;
+						var recordArray = response.data;
+
+						for (var index in recordArray) {
+							var rec = (recordArray[index]);
+							var value1 = rec["Student_ID"];
+							var value2 = rec["Name"];
+							var value3 = rec["Birthdate"];
+							var value4 = rec["Grade"];
+							var value5 = rec["Mentor"];
+							var display = document.getElementById("customers");
+							var newRow = display.insertRow(roww);
+
+							var cell1 = newRow.insertCell(0);
+							var cell2 = newRow.insertCell(1);
+							var cell3 = newRow.insertCell(2);
+							var cell4 = newRow.insertCell(3);
+							var cell5 = newRow.insertCell(4);
+							var cell6 = newRow.insertCell(5);
+							var cell7 = newRow.insertCell(6);
+
+							cell1.innerHTML = value1;
+							cell2.innerHTML = value2;
+							cell3.innerHTML = value3;
+							cell4.innerHTML = value4;
+							cell5.innerHTML = value5;
+
+							var div = document.getElementById("DeleteButtonn");
+							cell6.innerHTML = div.innerHTML;
+							var div = document.getElementById("EditButton");
+							cell7.innerHTML = div.innerHTML;
+							a = a + 1;
+							roww = roww + 1;
+						}
+					});
+				});
+		}
+
+
+		// Selecting button element
+		var btn = document.getElementById("myBtn");
+		btn.addEventListener("click", showtable);
+		btn.addEventListener("click", myfunction);
+
+		function DeleteDataa(r) {
+			ZOHO.CREATOR.init()
+				.then(function (data) {
+					var getRow = document.getElementById("customers");
+					var Cells = getRow.getElementsByTagName("td");
+					var gotRowVal = Cells[4].innerText;
+					var config = {
+						reportName: "All_Requests",
+						criteria: "(ID ==" + gotRowVal + ")"
+					}
+					ZOHO.CREATOR.API.deleteRecord(config).then(function (response) {
+						console.log("Record has been deleted");
+					});
+				});
+			var i = r.parentNode.parentNode.rowIndex;
+			setTimeout(function () { document.getElementById("customers").deleteRow(i); }, 1000);
+		}
+
+
+	</script>
+
 </body>
 
 </html>
