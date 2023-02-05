@@ -104,7 +104,7 @@
 	/* position: fixed; */
 	width: 100vw;
 	height: 100vh;
-	background-image: url(https://images.unsplash.com/photo-1515420043797-69a1bc7ee7a0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTU0fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60);
+	/* background-image: url(https://images.unsplash.com/photo-1515420043797-69a1bc7ee7a0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTU0fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60); */
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
