@@ -277,7 +277,7 @@
 					var Cells = getRow.getElementsByTagName("td");
 					var gotRowVal = Cells[4].innerText;
 					var config = {
-						reportName: "All_Requests",
+						reportName: "Sheet1_Report",
 						criteria: "(ID ==" + gotRowVal + ")"
 					}
 					ZOHO.CREATOR.API.deleteRecord(config).then(function (response) {
